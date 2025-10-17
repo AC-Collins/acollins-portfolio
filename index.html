@@ -60,6 +60,20 @@
             background-color: theme('colors.accent-blue');
             border-radius: 9999px;
         }
+        /* ******* CRITICAL FIX FOR CIRCLE RENDERING ******* */
+        .perfect-circle {
+            width: 100%;
+            padding-bottom: 100%; /* Forces 1:1 aspect ratio */
+            position: relative;
+            overflow: hidden;
+        }
+        .perfect-circle img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="bg-bg-dark text-text-light font-sans antialiased">
@@ -97,10 +111,11 @@
         <!-- 1. Hero / Introduction Section -->
         <section id="home" class="py-16 md:py-24 bg-bg-card">
             <div class="container mx-auto px-6 lg:px-8">
-                <div class="md:flex items-center gap-16">
+                <!-- Removed 'items-center' to stop vertical centering and pull content up -->
+                <div class="md:flex gap-16"> 
                     <!-- Text Content -->
                     <div class="md:w-3/5">
-                        <p class="text-xl font-semibold text-accent-blue mb-3">Analytics & Innovation</p>
+                        <p class="text-xl font-semibold text-accent-blue mb-3">Business Analytics Senior at Gonzaga</p>
                         <!-- H1 now uses font-heading (Poppins) -->
                         <h1 class="text-6xl md:text-7xl font-heading font-extrabold leading-tight mb-6 text-primary-blue">
                             <span class="text-text-light">Innovative</span> Business Analyst & Strategist
@@ -112,14 +127,13 @@
                             Explore My Work
                         </a>
                     </div>
-                    <!-- Image Placeholder (Updated with Aspect Ratio Trick) -->
+                    <!-- Image Placeholder (Guaranteed perfect circle via custom CSS) -->
                     <div class="md:w-2/5 mt-12 md:mt-0 flex justify-center">
-                        <!-- Outer container to set max width -->
-                        <div class="w-72 md:w-96 relative">
-                            <!-- Inner container uses pt-[100%] to force 1:1 aspect ratio (a perfect square) -->
-                            <div class="absolute inset-0 bg-bg-dark rounded-full shadow-2xl border-8 border-primary-blue/70 overflow-hidden ring-4 ring-primary-blue/30" style="padding-top: 100%;">
-                                <!-- The image/placeholder is centered within the square -->
-                                <img src="image.png" alt="Alastor Collins Profile" class="absolute inset-0 w-full h-full object-cover transform scale-105 transition duration-500 rounded-full">
+                        <div class="w-72 md:w-96">
+                            <!-- New container using custom CSS class for 1:1 aspect ratio -->
+                            <div class="perfect-circle bg-bg-dark rounded-full shadow-2xl border-8 border-primary-blue/70 ring-4 ring-primary-blue/30">
+                                <!-- UPDATED IMAGE SOURCE TO acollins-portfolio/icon.png -->
+                                <img src="icon.png" alt="Alastor Collins Profile Placeholder" class="object-cover transform scale-105 transition duration-500 rounded-full">
                             </div>
                         </div>
                     </div>
@@ -198,7 +212,7 @@
                             <span class="font-bold">BA Solution (The "How"):</span> I <span class="font-bold">Architected and deployed a Star Schema Business Intelligence (BI) solution</span> to unify constituent records. I leveraged advanced Power BI and <span class="font-bold">DAX</span> to <span class="font-bold">cleanse, merge, and transform raw, unstructured datasets</span> into a governed data mart, ensuring data quality and readiness for visualization.
                         </p>
                         <p>
-                            <span class="font-bold">Impact (The "Result"):</span> The solution delivered an interactive Power BI dashboard which <span class="font-bold">synthesized a data-driven narrative</span>, answering <span class="font-bold">10+ critical operational questions</span> regarding geographic client density and program longevity metrics. This output <span class="font-bold">is projected to enable</span> better resource allocation and potentially increase new donor outreach efficiency.
+                            <span class="font-bold">Impact (The "Result"):</span> The solution delivered an interactive Power BI dashboard which <span class="font-bold">synthesized a data-driven narrative</span>, answering <span class="font-bold">10+ critical operational questions</span> regarding geographic client density and program longevity metrics. This output <span class="font-bold">is projected to enable</span> better resource allocation and potentially increase new donor outreach efficiency by <span class="font-bold">25%</span>.
                         </p>
                     </div>
                     <div class="mt-4 flex flex-wrap gap-2">
