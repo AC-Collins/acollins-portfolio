@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Analyst Portfolio | Alastor Collins</title>
+    <!-- Google Fonts Import: Poppins (Headings) and Lato (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use the new font hierarchy and Dark Mode scheme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Dark mode professional scheme
+                        'primary-blue': '#3B82F6', // Vibrant Blue (Primary action)
+                        'accent-blue': '#60A5FA',  // Lighter Blue (Highlight/Accent)
+                        'bg-dark': '#1E1E1E',      // Very Dark Grey (Main Background)
+                        'bg-card': '#282828',      // Slightly Lighter Dark Grey (Card/Section Background)
+                        'text-light': '#E0E0E0',   // Light Grey/Silver (Primary Text)
+                        'text-silver': '#A0A0A0',  // Medium Silver (Secondary Text/Gray replacement)
+                        'white': '#FFFFFF',        // Pure white for high-contrast text
+                    },
+                    fontFamily: {
+                        // Body font (Lato)
+                        sans: ['Lato', 'sans-serif'],
+                        // Heading font (Poppins)
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                }
+            },
+            // Custom utility for padding-based aspect ratio 
+            safelist: [
+                'pt-[100%]',
+            ]
+        }
+    </script>
+    <style>
+        /* Custom styles for professional polish and scroll smoothing */
+        html {
+            scroll-behavior: smooth;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        /* Uses the accent-blue color for the divider */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50%;
+            height: 4px;
+            background-color: theme('colors.accent-blue');
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-bg-dark text-text-light font-sans antialiased">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-bg-card shadow-xl">
+        <nav class="container mx-auto px-6 lg:px-8 py-5 flex justify-between items-center">
+            <!-- Name is now text-light (Metallic Silver) using Poppins -->
+            <a href="#home" class="text-2xl font-heading font-extrabold text-text-light hover:text-accent-blue transition duration-300">
+                Alastor Collins
+            </a>
+            <div class="hidden md:flex space-x-10">
+                <a href="#about" class="text-base font-medium text-text-light hover:text-accent-blue transition duration-300">About</a>
+                <a href="#skills" class="text-base font-medium text-text-light hover:text-accent-blue transition duration-300">Expertise</a>
+                <a href="#projects" class="text-base font-medium text-text-light hover:text-accent-blue transition duration-300">Case Studies</a>
+                <a href="#resume" class="text-base font-medium text-text-light hover:text-accent-blue transition duration-300">Resume</a>
+                <a href="#contact" class="text-base font-medium text-text-light hover:text-accent-blue transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg text-text-light hover:bg-bg-dark/50 transition duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-bg-card shadow-xl">
+            <a href="#about" class="block px-6 py-3 text-text-light hover:bg-bg-dark">About</a>
+            <a href="#skills" class="block px-6 py-3 text-text-light hover:bg-bg-dark">Expertise</a>
+            <a href="#projects" class="block px-6 py-3 text-text-light hover:bg-bg-dark">Case Studies</a>
+            <a href="#resume" class="block px-6 py-3 text-text-light hover:bg-bg-dark">Resume</a>
+            <a href="#contact" class="block px-6 py-3 text-text-light hover:bg-bg-dark">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero / Introduction Section -->
+        <section id="home" class="py-16 md:py-24 bg-bg-card">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="md:flex items-center gap-16">
+                    <!-- Text Content -->
+                    <div class="md:w-3/5">
+                        <p class="text-xl font-semibold text-accent-blue mb-3">Analytics & Innovation</p>
+                        <!-- H1 now uses font-heading (Poppins) -->
+                        <h1 class="text-6xl md:text-7xl font-heading font-extrabold leading-tight mb-6 text-primary-blue">
+                            <span class="text-text-light">Innovative</span> Business Analyst & Strategist
+                        </h1>
+                        <p id="about" class="text-xl text-text-silver mb-8">
+                            As a Strategy-Driven Business Analyst leveraging a Business Analytics and Entrepreneurship-Focused BBA, I specialize in combining analytical rigor with strategic ideation. My expertise lies in modeling complex business challenges, identifying opportunities for innovation, and translating data-backed requirements into high-value, market-ready solutions.
+                        </p>
+                        <a href="#projects" class="inline-block bg-primary-blue text-text-light font-semibold py-4 px-10 rounded-xl shadow-2xl hover:bg-accent-blue transition duration-500 transform hover:scale-105">
+                            Explore My Work
+                        </a>
+                    </div>
+                    <!-- Image Placeholder (Updated with Aspect Ratio Trick) -->
+                    <div class="md:w-2/5 mt-12 md:mt-0 flex justify-center">
+                        <!-- Outer container to set max width -->
+                        <div class="w-72 md:w-96 relative">
+                            <!-- Inner container uses pt-[100%] to force 1:1 aspect ratio (a perfect square) -->
+                            <div class="absolute inset-0 bg-bg-dark rounded-full shadow-2xl border-8 border-primary-blue/70 overflow-hidden ring-4 ring-primary-blue/30" style="padding-top: 100%;">
+                                <!-- The image/placeholder is centered within the square -->
+                                <img src="https://placehold.co/400x400/282828/60A5FA?text=AC" alt="Alastor Collins Profile Placeholder" class="absolute inset-0 w-full h-full object-cover transform scale-105 transition duration-500 rounded-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Core Skills/Expertise Section -->
+        <section id="skills" class="py-20 md:py-32 bg-bg-dark">
+            <div class="container mx-auto px-6 lg:px-8">
+                <!-- H2 now uses font-heading (Poppins) -->
+                <h2 class="text-4xl font-heading font-bold mb-16 text-center section-title mx-auto">Core Expertise</h2>
+
+                <!-- Skills Grid (Updated with specific course context and resume skills) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Skill Card 1: Data Modeling & Architecture -->
+                    <div class="p-8 bg-bg-card rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-1 border-t-4 border-primary-blue">
+                        <svg class="w-10 h-10 text-primary-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v14m-9 0H3a2 2 0 00-2 2v2a2 2 0 002 2h6M9 19a2 2 0 002 2h2a2 2 0 002-2M12 3h12"></path></svg>
+                        <!-- H3 now uses font-heading (Poppins) -->
+                        <h3 class="text-xl font-heading font-bold text-text-light mb-3">Data Modeling & DB Design</h3>
+                        <p class="text-sm text-text-silver">
+                            <span class="font-bold">Star Schema Design</span>, Data Normalization, <span class="font-bold">ERD Modeling</span>, Data Warehousing Concepts, <span class="font-bold">SQL</span>, Data Integrity, and ETL processes.
+                        </p>
+                    </div>
+
+                    <!-- Skill Card 2: Strategic Innovation (E&I Focus) -->
+                    <div class="p-8 bg-bg-card rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-1 border-t-4 border-accent-blue">
+                        <svg class="w-10 h-10 text-accent-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m3-1h13V7a4 4 0 00-4-4H7a4 4 0 00-4 4v10a2 2 0 002 2h3m0-1h13V7a4 4 0 00-4-4H7a4 4 0 00-4 4v10a2 2 0 002 2h3"></path></svg>
+                        <!-- H3 now uses font-heading (Poppins) -->
+                        <h3 class="text-xl font-heading font-bold text-text-light mb-3">Strategic Innovation</h3>
+                        <p class="text-sm text-text-silver">
+                            <span class="font-bold">New Venture Creation</span>, <span class="font-bold">Feasibility Assessment</span>, <span class="font-bold">Strategic Business Decisions</span>, Financial Forecasting, MVP Development, and Market Analysis.
+                        </p>
+                    </div>
+
+                    <!-- Skill Card 3: Business Intelligence & Analytics -->
+                    <div class="p-8 bg-bg-card rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-1 border-t-4 border-primary-blue">
+                        <svg class="w-10 h-10 text-primary-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5 5.223 5 3.375 5.922 2.106 7.234m19.78 0C21.625 5.922 19.777 5 17.5 5 15.754 5 14.168 5.477 13 6.253M12 6.253c1.031 0 2.054.191 3.079.458l-1.077 3.924M12 6.253c-1.031 0-2.054.191-3.079.458l1.077 3.924m-3.079 0c-1.637 0-3.185.396-4.298 1.056l4.298 1.76M12 18.75c-1.031 0-2.054-.191-3.079-.458l1.077-3.924m-1.077 3.924c-1.637 0-3.185-.396-4.298-1.056l4.298-1.76M12 18.75c1.031 0 2.054-.191 3.079-.458l-1.077-3.924m1.077 3.924c1.637 0 3.185-.396 4.298-1.056l-4.298-1.76"></path></svg>
+                        <!-- H3 now uses font-heading (Poppins) -->
+                        <h3 class="text-xl font-heading font-bold text-text-light mb-3">Business Intelligence & Analytics</h3>
+                        <p class="text-sm text-text-silver">
+                            <span class="font-bold">Predictive Modeling</span>, Regression Analysis, <span class="font-bold">Power BI</span>, Python, <span class="font-bold">Stata</span> for Statistical Analysis, and Advanced Excel.
+                        </p>
+                    </div>
+
+                    <!-- Skill Card 4: Business Acumen -->
+                    <div class="p-8 bg-bg-card rounded-2xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-1 border-t-4 border-accent-blue">
+                        <svg class="w-10 h-10 text-accent-blue mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-5a3 3 0 00-3-3H8a3 3 0 00-3 3v5H1m16 0c-4.5-2.25-9-2.25-13.5 0"></path></svg>
+                        <!-- H3 now uses font-heading (Poppins) -->
+                        <h3 class="text-xl font-heading font-bold text-text-light mb-3">Business Acumen</h3>
+                        <p class="text-sm text-text-silver">
+                            <span class="font-bold">Operations Management</span>, Cross-Functional Communication, Sales Process Optimization, Data-Informed Enablement Strategies, and Conflict Resolution.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Projects / Case Studies Section -->
+        <section id="projects" class="py-20 md:py-32 bg-bg-card">
+            <div class="container mx-auto px-6 lg:px-8">
+                <!-- H2 now uses font-heading (Poppins) -->
+                <h2 class="text-4xl font-heading font-bold mb-16 text-center section-title mx-auto">Featured Case Studies</h2>
+
+                <!-- Project 1: Non-Profit Analytics Project (Using Resume Content) -->
+                <div class="mb-16 p-8 bg-bg-dark rounded-2xl shadow-xl hover:shadow-2xl transition duration-300">
+                    <!-- H3 now uses font-heading (Poppins) -->
+                    <h3 class="text-2xl font-heading font-bold text-primary-blue mb-3">Data Architecture & Non-Profit Impact Modeling</h3>
+                    <span class="text-sm text-text-silver bg-text-silver/10 px-3 py-1 rounded-full">Industry: Non-Profit / Social Services</span>
+                    <div class="mt-6 space-y-4 text-text-silver">
+                        <p>
+                            <span class="font-bold">Challenge (The "Why"):</span> The non-profit was unable to centralize program efficacy and constituent profile data, hindering strategic decision-making regarding resource deployment, targeted outreach, and understanding match longevity drivers for over 12,000 people served.
+                        </p>
+                        <p>
+                            <span class="font-bold">BA Solution (The "How"):</span> I <span class="font-bold">Architected and deployed a Star Schema Business Intelligence (BI) solution</span> to unify constituent records. I leveraged advanced Power BI and <span class="font-bold">DAX</span> to <span class="font-bold">cleanse, merge, and transform raw, unstructured datasets</span> into a governed data mart, ensuring data quality and readiness for visualization.
+                        </p>
+                        <p>
+                            <span class="font-bold">Impact (The "Result"):</span> The solution delivered an interactive Power BI dashboard which <span class="font-bold">synthesized a data-driven narrative</span>, answering <span class="font-bold">10+ critical operational questions</span> regarding geographic client density and program longevity metrics. This output <span class="font-bold">is projected to enable</span> better resource allocation and potentially increase new donor outreach efficiency by <span class="font-bold">25%</span>.
+                        </p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">Power BI (Advanced DAX)</span>
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">Star Schema Design</span>
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">Data Cleansing/ETL</span>
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">Feasibility Assessment</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Relational Database & BI Project (Using Resume Content) -->
+                <div class="mb-16 p-8 bg-bg-dark rounded-2xl shadow-xl hover:shadow-2xl transition duration-300">
+                    <!-- H3 now uses font-heading (Poppins) -->
+                    <h3 class="text-2xl font-heading font-bold text-primary-blue mb-3">Relational Database Design & BI Reporting</h3>
+                    <span class="text-sm text-text-silver bg-text-silver/10 px-3 py-1 rounded-full">Simulated Business Scenario / Data Management</span>
+                    <div class="mt-6 space-y-4 text-text-silver">
+                        <p>
+                            <span class="font-bold">Challenge (The "Why"):</span> For a simulated two-store retail operation, the primary challenge was designing a robust database capable of managing customer and inventory data, while providing security and enabling BI reporting on top-selling products and promotional effectiveness.
+                        </p>
+                        <p>
+                            <span class="font-bold">BA Solution (The "How"):</span> I <span class="font-bold">modeled and constructed a fully 3NF-normalized retail database</span> (9 entities, 50+ relationships) for the simulated business. This involved executing <span class="font-bold">complex SQL queries</span> to facilitate comprehensive data manipulation and analysis. Crucially, I <span class="font-bold">architected a strategic AWS deployment roadmap and implemented two-tier, role-based access controls</span> to secure sensitive customer data.
+                        </p>
+                        <p>
+                            <span class="font-bold">Impact (The "Result"):</span> The optimized structure efficiently ingests and processes data, directly supporting robust BI reporting which enables the production of insights on top-selling products, high-value customers, and promotional effectiveness. The implemented two-tier access controls ensured compliance and safeguarded customer data for the multi-state organization.
+                        </p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">SQL (Complex Querying)</span>
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">3NF Normalization</span>
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">Role-Based Access Control</span>
+                        <span class="text-xs font-medium bg-accent-blue/20 text-accent-blue px-3 py-1 rounded-full">Systems Analysis</span>
+                    </div>
+                </div>
+
+                <!-- NEW RESUME SECTION -->
+                <section id="resume" class="mt-20">
+                    <div class="p-8 border-2 border-primary-blue rounded-xl bg-primary-blue/20 text-center">
+                        <h3 class="text-2xl font-heading font-bold text-text-light mb-4">View Full Professional Resume</h3>
+                        <p class="text-text-silver mb-6">For a detailed overview of my education, work experience, and full skill set, please download the PDF.</p>
+                        <!-- File must be referenced by its original upload name -->
+                        <a href="Alastor Collins - Business Analyst.pdf" download="Alastor Collins - Business Analyst.pdf" class="inline-block bg-accent-blue text-white font-extrabold py-4 px-12 rounded-xl shadow-lg hover:bg-primary-blue hover:text-text-light transition duration-500 transform hover:scale-105">
+                            Download Resume (PDF)
+                        </a>
+                    </div>
+                </section>
+                
+                <!-- Call to Action -->
+                <div class="text-center mt-20 p-8 border-2 border-dashed border-primary-blue rounded-xl bg-primary-blue/20">
+                    <p class="text-2xl font-semibold text-text-light mb-4">Ready to drive value and innovation?</p>
+                    <!-- Text is white -->
+                    <a href="#contact" class="inline-block bg-accent-blue text-white font-extrabold py-4 px-12 rounded-xl shadow-lg hover:bg-primary-blue hover:text-text-light transition duration-500 transform hover:scale-105">
+                        Let's Connect
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-bg-dark">
+            <div class="container mx-auto px-6 lg:px-8 max-w-2xl">
+                <!-- H2 now uses font-heading (Poppins) -->
+                <h2 class="text-4xl font-heading font-bold mb-16 text-center section-title mx-auto">Contact Me</h2>
+                <div class="bg-bg-card p-10 rounded-2xl shadow-2xl">
+                    <p class="text-center text-text-silver mb-8">I am currently open to new roles and collaborations. Send a message about your project or opportunity, and I'll respond promptly!</p>
+                    <form action="#" method="POST">
+                        <div class="mb-6">
+                            <label for="name" class="block text-sm font-medium text-text-light mb-2">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" class="w-full p-3 border border-text-silver/30 bg-bg-dark text-text-light rounded-lg focus:ring-primary-blue focus:border-primary-blue transition duration-300" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium text-text-light mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full p-3 border border-text-silver/30 bg-bg-dark text-text-light rounded-lg focus:ring-primary-blue focus:border-primary-blue transition duration-300" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-text-light mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="How can I help you achieve your business goals?" class="w-full p-3 border border-text-silver/30 bg-bg-dark text-text-light rounded-lg focus:ring-primary-blue focus:border-primary-blue transition duration-300" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary-blue text-text-light font-semibold py-3 rounded-xl shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                <!-- Social/External Links -->
+                <div class="mt-12 text-center text-text-silver">
+                    <p class="mb-6 text-lg font-semibold">Connect with me on LinkedIn</p>
+                    <div class="flex justify-center space-x-8">
+                        <a href="https://linkedin.com/in/alastor-collins" target="_blank" class="text-primary-blue hover:text-accent-blue transition duration-300 transform hover:scale-110" aria-label="LinkedIn">
+                            <!-- LinkedIn Icon -->
+                            <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.366-4-3.266-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <!-- GitHub link removed -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bg-card py-8">
+        <div class="container mx-auto px-6 lg:px-8 text-center text-text-silver">
+            <p>&copy; <span id="year"></span> Alastor Collins. Business Analyst. </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Footer Year -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in the footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Mobile menu logic
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
