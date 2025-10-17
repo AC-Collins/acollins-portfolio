@@ -133,7 +133,7 @@
                             <!-- New container using custom CSS class for 1:1 aspect ratio -->
                             <div class="perfect-circle bg-bg-dark rounded-full shadow-2xl border-8 border-primary-blue/70 ring-4 ring-primary-blue/30">
                                 <!-- UPDATED IMAGE SOURCE TO acollins-portfolio/icon.png -->
-                                <img src="icon.png" alt="Alastor Collins Profile Image" class="object-cover transform scale-105 transition duration-500 rounded-full">
+                                <img src="acollins-portfolio/icon.png" alt="Alastor Collins Profile Placeholder" class="object-cover transform scale-105 transition duration-500 rounded-full">
                             </div>
                         </div>
                     </div>
@@ -346,8 +346,8 @@
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     body: formData,
-                    // The 'Content-Type': 'application/x-www-form-urlencoded' header is set automatically by FormData 
-                    // when using fetch, which the Google script expects.
+                    // *** ADDED REDIRECT: 'FOLLOW' to fix potential Network/CORS issues ***
+                    redirect: 'follow' 
                 });
 
                 // Check for successful response status (200-299)
@@ -366,7 +366,8 @@
                 }
             } catch (error) {
                 console.error('Network or fetch error:', error);
-                statusMessage.textContent = 'Network error. Please check your connection.';
+                // This catch block handles pure network failures (e.g., DNS, connection refused)
+                statusMessage.textContent = 'Network error. Please ensure the site is live and the script URL is correct.';
                 statusMessage.classList.remove('text-accent-blue');
                 statusMessage.classList.add('text-red-500');
             } finally {
