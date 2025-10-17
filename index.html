@@ -278,7 +278,8 @@
                 <h2 class="text-4xl font-heading font-bold mb-16 text-center section-title mx-auto">Contact Me</h2>
                 <div class="bg-bg-card p-10 rounded-2xl shadow-2xl">
                     <p class="text-center text-text-silver mb-8">I am currently open to new roles and collaborations. Send a message about your project or opportunity, and I'll respond promptly!</p>
-                    <form action="https://script.google.com/macros/s/AKfycbwUax_zatsZBQ-FLjy9UtpCgbAWPrvUQmBxAP2Nfn8cx2rCOzhHkcfy5-5Qg176yYk2/exec" method="POST">
+                    <!-- Form now has an ID and uses onsubmit to trigger the fetch function -->
+                    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbxZeG9t9d8hhEaGXBSYnP6UrvGK5BO0UQpb8lDpSVamrYxso_eS5j28dL_cGVyqj61D/exec" onsubmit="submitToGoogleSheet(event)">
                         <div class="mb-6">
                             <label for="name" class="block text-sm font-medium text-text-light mb-2">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your Name" class="w-full p-3 border border-text-silver/30 bg-bg-dark text-text-light rounded-lg focus:ring-primary-blue focus:border-primary-blue transition duration-300" required>
@@ -291,9 +292,11 @@
                             <label for="message" class="block text-sm font-medium text-text-light mb-2">Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="How can I help you achieve your business goals?" class="w-full p-3 border border-text-silver/30 bg-bg-dark text-text-light rounded-lg focus:ring-primary-blue focus:border-primary-blue transition duration-300" required></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-primary-blue text-text-light font-semibold py-3 rounded-xl shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-105">
+                        <button id="submit-button" type="submit" class="w-full bg-primary-blue text-text-light font-semibold py-3 rounded-xl shadow-lg hover:bg-accent-blue transition duration-300 transform hover:scale-105">
                             Send Message
                         </button>
+                        <!-- Submission Status Message -->
+                        <p id="form-status" class="mt-4 text-center text-accent-blue hidden"></p>
                     </form>
                 </div>
                 <!-- Social/External Links -->
@@ -318,8 +321,60 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu and Footer Year -->
+    <!-- JavaScript for Form Submission, Mobile Menu, and Footer Year -->
     <script>
+        // *** GOOGLE APPS SCRIPT URL - NOW USING YOUR LIVE URL ***
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxZeG9t9d8hhEaGXBSYnP6UrvGK5BO0UQpb8lDpSVamrYxso_eS5j28dL_cGVyqj61D/exec"; 
+
+        const form = document.getElementById('contact-form');
+        const statusMessage = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-button');
+
+        async function submitToGoogleSheet(event) {
+            event.preventDefault();
+
+            // Show loading state
+            statusMessage.textContent = 'Sending...';
+            statusMessage.classList.remove('hidden', 'text-red-500', 'text-green-500');
+            statusMessage.classList.add('text-accent-blue');
+            submitButton.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                // Use fetch to send the data as POST to the Google Apps Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    // The 'Content-Type': 'application/x-www-form-urlencoded' header is set automatically by FormData 
+                    // when using fetch, which the Google script expects.
+                });
+
+                // Check for successful response status (200-299)
+                if (response.ok) {
+                    statusMessage.textContent = 'Message sent successfully! I will respond soon.';
+                    statusMessage.classList.remove('text-accent-blue');
+                    statusMessage.classList.add('text-green-500');
+                    form.reset(); // Clear the form
+                } else {
+                    // Handle non-200 responses
+                    const errorText = await response.text();
+                    console.error('Submission failed with status:', response.status, 'Error:', errorText);
+                    statusMessage.textContent = 'Error sending message. Please try again or connect on LinkedIn.';
+                    statusMessage.classList.remove('text-accent-blue');
+                    statusMessage.classList.add('text-red-500');
+                }
+            } catch (error) {
+                console.error('Network or fetch error:', error);
+                statusMessage.textContent = 'Network error. Please check your connection.';
+                statusMessage.classList.remove('text-accent-blue');
+                statusMessage.classList.add('text-red-500');
+            } finally {
+                submitButton.disabled = false;
+                statusMessage.classList.remove('hidden');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in the footer
             document.getElementById('year').textContent = new Date().getFullYear();
